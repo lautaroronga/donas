@@ -172,7 +172,7 @@ function redirectToWhatsApp() {
       <div className="social-item">
         <a href="https://www.tiktok.com/@donasyaccion?is_from_webapp=1&sender_device=pc">
           <img className="tiktok" src="/img/tiktok.png" alt="TikTok" />
-          {/* <p id="red1">donasyaccion</p> */}
+          <p id="red1">donasyaccion</p>
         </a>
       </div>
       <div className="social-item">

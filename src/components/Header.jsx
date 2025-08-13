@@ -42,7 +42,7 @@ export default function Header({cart, removeFromCart, increaseQuantity, decrease
                                     <td>
                                         <img className="img-fluid" src={`/img/${donas.image}.png`} alt="imagen donas" />
                                     </td>
-                                    <td>{donas.name}</td>
+                                    <td id="nombredona">{donas.name}</td>
                                     <td id="donaprecio" className="fw-bold">
                                         ${donas.price}
                                     </td>

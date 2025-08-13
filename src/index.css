@@ -971,6 +971,9 @@ body {
     margin-left: 2.5rem;
     margin-bottom: 10px;
   }
+  #nombredona{
+  font-size: medium;
+  }
 }
 
 #alias{
@@ -1003,3 +1006,4 @@ body {
 #eliminado{
   padding-top:25px;
 }
+
