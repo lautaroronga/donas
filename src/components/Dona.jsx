@@ -1,6 +1,6 @@
 export default function Dona({donas, setCart, addToCart}) {
     
-    const{ id, name, image, description, price}=donas
+    const{ id, name, image, description, price, off}=donas
 
 
 
@@ -12,6 +12,7 @@ export default function Dona({donas, setCart, addToCart}) {
                     <div className="col-8">
                         <h3 className="fs-4 fw-bold text-uppercase">{name}</h3>
                         <p>{description}</p>
+                        <p id="pers">${off}</p>
                         <p className="fw-black text-primary fs-3">${price}</p>
                         <button 
                             type="button"

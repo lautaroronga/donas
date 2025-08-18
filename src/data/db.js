@@ -5,6 +5,7 @@ export const db = [
         image: 'barbie',
         description: 'Sabor frutilla',
         price: 990,
+        off:1100,
     },
     {
         id: 2,
@@ -12,6 +13,7 @@ export const db = [
         image: 'ladooscuro',
         description: 'Sabor chocolate',
         price: 900,
+        off:1000,
     },
     {
         id: 3,
@@ -19,6 +21,7 @@ export const db = [
         image: 'baymax',
         description: 'Sabor chocolate blanco',
         price: 990,
+        off:1100,
     },
     {
         id: 4,
@@ -26,6 +29,7 @@ export const db = [
         image: 'walterwhite',
         description: 'Dona cubierta de azucar',
         price: 810,
+        off:900,
     },
     {
         id: 5,
@@ -33,6 +37,7 @@ export const db = [
         image: 'popdulce',
         description: 'Pochoclos cubiertos en azucar',
         price: 450,
+        off:500,
     },
     {
         id: 6,
@@ -40,5 +45,6 @@ export const db = [
         image: 'popsalado',
         description: 'Pochoclos cubiertos en sal',
         price: 450,
+        off:500,
     },
   ]

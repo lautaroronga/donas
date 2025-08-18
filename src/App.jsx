@@ -186,7 +186,7 @@ function redirectToWhatsApp() {
   
 </footer>
 
-    {showModal && (
+   {showModal && (
   <div style={{
     position: 'fixed',
     top: 0, left: 0,
@@ -205,16 +205,32 @@ function redirectToWhatsApp() {
     }}>
       <h2>Gracias por tu compra 🎉</h2>
       <p id="precio">Total: <strong>${calcularTotal().toFixed(2)}</strong></p>
-      <p id="alias">Alias: Donasyaccion</p>
+
+      <p id="alias">
+  Alias: <strong>Donasyaccion</strong>
+  <img 
+    src="/img/copy.png" 
+    alt="Copiar alias"
+    onClick={() => navigator.clipboard.writeText("Donasyaccion")}
+    style={{ 
+      marginLeft: "10px", 
+      width: "20px", 
+      height: "20px", 
+      cursor: "pointer" 
+    }}
+  />
+</p>
+
+
       <button
         onClick={() => {
-        redirectToWhatsApp();
-        setShowModal(false);
-        clearCart();
-      }}
-      style={{ marginTop: '2px', padding: '0.5rem 1rem' }}
->
-      Hacer pedido
+          redirectToWhatsApp();
+          setShowModal(false);
+          clearCart();
+        }}
+        style={{ marginTop: '2px', padding: '0.5rem 1rem' }}
+      >
+        Hacer pedido
       </button>
 
       <br/>
