@@ -1010,4 +1010,6 @@ body {
 #pers{
   font-size: x-large;
   text-decoration: line-through;
+  margin-bottom: -13px;
+  margin-top: -13px;
 }
