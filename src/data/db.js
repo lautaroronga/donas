@@ -1,11 +1,11 @@
 export const db = [
     {
         id: 1,
-        name: 'BARBIE',
-        image: 'barbie',
-        description: 'Sabor frutilla',
-        price: 990,
-        off:1100,
+        name: 'CRUELLA',
+        image: 'cruella',
+        description: 'Sabor oreo',
+        price: 1200,
+        off:1300,
     },
     {
         id: 2,
@@ -20,7 +20,7 @@ export const db = [
         name: 'BAYMAX',
         image: 'baymax',
         description: 'Sabor chocolate blanco',
-        price: 990,
+        price: 1000,
         off:1100,
     },
     {
@@ -28,7 +28,7 @@ export const db = [
         name: 'WALTER WHITE',
         image: 'walterwhite',
         description: 'Dona cubierta de azucar',
-        price: 810,
+        price: 800,
         off:900,
     },
     {
