@@ -256,7 +256,7 @@ export default function Header({
                                                                     `$${donas.price}`
                                                                 )}
                                                             </td>
-                                                            <td style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                                            <td id="cant"style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                                                                 <button 
                                                                     type="button" 
                                                                     className="btn btn-dark cantidad" 

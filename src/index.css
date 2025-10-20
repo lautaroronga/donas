@@ -1004,7 +1004,7 @@ body {
 }
 
 #eliminado{
-  padding-top:30.5px;
+  padding-top:12px;
 }
 
 #pers{
@@ -1018,3 +1018,11 @@ body {
   color:white
 }
 
+.table td, .table th {
+  vertical-align: middle !important;
+}
+
+#cant{
+  padding-bottom:33px;
+  padding-top:33px;
+}
