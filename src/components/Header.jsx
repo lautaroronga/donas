@@ -1,4 +1,4 @@
-import {useMemo, useState, useEffect} from 'react'
+import {useMemo, useState} from 'react'
 
 export default function Header({
   cart, 
@@ -23,6 +23,9 @@ export default function Header({
     const cartTotal = useMemo(() => calcularTotal ? calcularTotal() : cart.reduce((total, item) => total + (item.quantity * item.price), 0), [cart, calcularTotal]);
     const ahorroTotal = useMemo(() => calcularAhorro ? calcularAhorro() : 0, [cart, calcularAhorro]);
     const totalConDescuento = useMemo(() => calcularTotalConDescuento ? calcularTotalConDescuento() : cartTotal, [cartTotal, calcularTotalConDescuento]);
+    
+    // 🔹 Estado para el método de pago
+    const [metodoPago, setMetodoPago] = useState('efectivo');
 
     // 🔹 Función para determinar la fuente de la imagen
     const getImageSource = (item) => {
@@ -35,6 +38,11 @@ export default function Header({
         else {
             return '/img/default-dona.png';
         }
+    };
+
+    // 🔹 Función de pago que incluye el método seleccionado
+    const handlePay = () => {
+        pay(metodoPago);
     };
 
     return (
@@ -186,7 +194,7 @@ export default function Header({
                                                 </div>
                                             )}
 
-                                            {/* 🔹 TABLA DE PRODUCTOS DEL CARRITO - ESTO ES LO QUE FALTABA */}
+                                            {/* 🔹 TABLA DE PRODUCTOS DEL CARRITO */}
                                             <table className="w-100 table">
                                                 <thead>
                                                     <tr>
@@ -305,6 +313,71 @@ export default function Header({
                                                 </tbody>
                                             </table>
                                             
+                                            {/* 🔹 SECCIÓN DE MÉTODO DE PAGO */}
+                                            <div style={{ 
+                                                border: '1px solid #ddd', 
+                                                borderRadius: '8px', 
+                                                padding: '15px', 
+                                                marginBottom: '15px',
+                                                background: '#f8f9fa'
+                                            }}>
+                                                <h5 style={{ margin: '0 0 10px 0', color: '#333' }}>
+                                                    💳 Método de Pago
+                                                </h5>
+                                                <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
+                                                    <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
+                                                        <input
+                                                            type="radio"
+                                                            name="metodoPago"
+                                                            value="efectivo"
+                                                            checked={metodoPago === 'efectivo'}
+                                                            onChange={(e) => setMetodoPago(e.target.value)}
+                                                            style={{ cursor: 'pointer' }}
+                                                        />
+                                                        <span>💰 Efectivo</span>
+                                                    </label>
+                                                    <label style={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
+                                                        <input
+                                                            type="radio"
+                                                            name="metodoPago"
+                                                            value="transferencia"
+                                                            checked={metodoPago === 'transferencia'}
+                                                            onChange={(e) => setMetodoPago(e.target.value)}
+                                                            style={{ cursor: 'pointer' }}
+                                                        />
+                                                        <span>🏦 Transferencia</span>
+                                                    </label>
+                                                </div>
+                                                
+                                                {/* Información adicional según el método seleccionado */}
+                                                {metodoPago === 'transferencia' && (
+                                                    <div style={{
+                                                        marginTop: '10px',
+                                                        padding: '10px',
+                                                        background: '#e3f2fd',
+                                                        borderRadius: '5px',
+                                                        fontSize: '12px',
+                                                        color: '#1565c0'
+                                                    }}>
+                                                        <strong>📝 Datos para transferencia:</strong><br />
+                                                        Alias: donasyaccion
+                                                    </div>
+                                                )}
+                                                
+                                                {metodoPago === 'efectivo' && (
+                                                    <div style={{
+                                                        marginTop: '10px',
+                                                        padding: '10px',
+                                                        background: '#e8f5e8',
+                                                        borderRadius: '5px',
+                                                        fontSize: '12px',
+                                                        color: '#2e7d32'
+                                                    }}>
+                                                        <strong>💵 Pago en efectivo al recibir tu pedido</strong>
+                                                    </div>
+                                                )}
+                                            </div>
+                                            
                                             <div style={{ borderTop: '1px solid #eee', paddingTop: '10px' }}>
                                                 {ahorroTotal > 0 && (
                                                     <p className="text-end" style={{ color: '#2196F3', fontSize: '14px' }}>
@@ -351,7 +424,7 @@ export default function Header({
                                                 id="addcart" 
                                                 className="btn btn-dark w-100 mt-3 p-2" 
                                                 type="button" 
-                                                onClick={pay}
+                                                onClick={handlePay}
                                                 style={{
                                                     backgroundColor: '#28a745',
                                                     border: 'none',
@@ -359,7 +432,7 @@ export default function Header({
                                                     fontWeight: 'bold'
                                                 }}
                                             >
-                                                💳 Pagar
+                                                {metodoPago === 'efectivo' ? '💰 Pagar en Efectivo' : '🏦 Pagar por Transferencia'}
                                             </button>
                                             <button 
                                                 id="addcart" 

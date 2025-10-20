@@ -54,8 +54,9 @@ function App() {
   };
 
   // 🔹 FUNCIÓN QUE FALTABA: pay
-  const pay = () => {
+  const pay = (metodoPago) => {
     setShowModal(true);
+    console.log(`Pagando con: ${metodoPago}`);
   };
 
   // Constantes para límites del carrito
@@ -573,54 +574,54 @@ function App() {
               Total: <strong>${calcularTotalConDescuento().toFixed(2)}</strong>
             </p>
 
-            {mostrarInputCodigo && !descuentoAplicado && (
-              <div style={{ marginTop: '15px', padding: '10px', background: '#fff3cd', borderRadius: '5px' }}>
-                <p style={{ margin: '0 0 10px 0', fontSize: '14px', color: '#856404' }}>
-                  🎁 <strong>¡Eres un cliente recurrente!</strong> Tenés un código de descuento especial.
-                </p>
-                <div style={{ display: 'flex', gap: '10px' }}>
-                  <input
-                    type="text"
-                    placeholder="Ingresá tu código"
-                    value={codigoDescuento}
-                    onChange={(e) => setCodigoDescuento(e.target.value)}
-                    style={{
-                      flex: 1,
-                      padding: '8px',
-                      borderRadius: '5px',
-                      border: '1px solid #ccc',
-                    }}
-                  />
-                  <button
-                    onClick={aplicarCodigoDescuento}
-                    style={{
-                      padding: '8px 15px',
-                      backgroundColor: '#28a745',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '5px',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    Aplicar
-                  </button>
-                </div>
-                {mensajeCodigo && (
-                  <p style={{ 
-                    margin: '10px 0 0 0', 
-                    fontSize: '12px', 
-                    color: mensajeCodigo.includes('✅') ? '#28a745' : '#dc3545' 
-                  }}>
-                    {mensajeCodigo}
-                  </p>
-                )}
-              </div>
-            )}
+            {!descuentoAplicado && (
+  <div style={{ marginTop: '15px', padding: '10px', background: '#fff3cd', borderRadius: '5px' }}>
+    <p style={{ margin: '0 0 10px 0', fontSize: '14px', color: '#856404' }}>
+      🎁 <strong>¡Tenés un código de descuento?</strong> Ingresalo aquí.
+    </p>
+    <div style={{ display: 'flex', gap: '10px' }}>
+      <input
+        type="text"
+        placeholder="Ingresá tu código"
+        value={codigoDescuento}
+        onChange={(e) => setCodigoDescuento(e.target.value)}
+        style={{
+          flex: 1,
+          padding: '8px',
+          borderRadius: '5px',
+          border: '1px solid #ccc',
+        }}
+      />
+      <button
+        onClick={aplicarCodigoDescuento}
+        style={{
+          padding: '8px 15px',
+          backgroundColor: '#28a745',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer',
+        }}
+      >
+        Aplicar
+      </button>
+    </div>
+    {mensajeCodigo && (
+      <p style={{ 
+        margin: '10px 0 0 0', 
+        fontSize: '12px', 
+        color: mensajeCodigo.includes('✅') ? '#28a745' : '#dc3545' 
+      }}>
+        {mensajeCodigo}
+      </p>
+    )}
+  </div>
+)}
 
             <p id="alias">
               Alias: <strong>Donasyaccion</strong>
               <img
-                src="public/img/copy.png"
+                src="/img/copy.png"
                 alt="Copiar alias"
                 onClick={() => {
                   const textToCopy = "Donasyaccion";
